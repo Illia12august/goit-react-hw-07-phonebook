@@ -1,15 +1,9 @@
-import { createSelector } from '@reduxjs/toolkit';
+export const getTasks = state => state.contacts.contacts;// весь зміст стейту
 
-export const selectContacts = state => state.contactData.contacts.items;
-export const selectIsLoading = state => state.contactData.contacts.isLoading;
-export const selectIsError = state => state.contactData.contacts.error;
-export const selectFilter = state => state.contactData.filter;
+export const selectItems = state => state.contacts.contacts.items;// масив об'єктів з контактами та даними
 
-export const selectDisplayedContacts = createSelector(
-  [selectContacts, selectFilter],
-  (contacts, filter) => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
+export const selectIsLoading = state => state.contacts.contacts.isLoading;// стан завантаження
+
+export const selectError = state => state.contacts.contacts.error;// стан помилки
+
+export const selectFilter = state => state.contacts.filter;// стан фільтру
